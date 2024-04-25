@@ -1,7 +1,4 @@
 import './App.scss'
+import {MainRoutes} from "./routes/MainRoutes.tsx";
 
-export const App = () => (
-  <>
-    <h2>hello world</h2>
-  </>
-);
+export const App = () => <MainRoutes />;
