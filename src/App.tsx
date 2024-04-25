@@ -1,4 +1,8 @@
 import './App.scss'
-import {MainRoutes} from "./routes/MainRoutes.tsx";
+import { MainRoutes } from './routes/MainRoutes.tsx'
+import { Header } from './components'
 
-export const App = () => <MainRoutes />;
+export const App = () => <>
+  <Header/>
+  <MainRoutes />
+</>

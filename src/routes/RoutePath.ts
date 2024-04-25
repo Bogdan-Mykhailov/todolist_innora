@@ -1,4 +1,4 @@
-import { PATH } from './types/Path';
+import { PATH } from './types/Path'
 
 export const RoutePath: Record<PATH, string> = {
   [PATH.Main]: '/',
@@ -6,4 +6,4 @@ export const RoutePath: Record<PATH, string> = {
   [PATH.All]: '/all',
   [PATH.Deleted]: '/deleted',
   [PATH.Error]: '*',
-};
+}
