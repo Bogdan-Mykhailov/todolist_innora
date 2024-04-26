@@ -3,6 +3,7 @@ import { Todos } from '../../../types.ts'
 
 const initialState: Todos = {
   'todos': JSON.parse( localStorage.getItem( 'todos' ) || '[]' ),
+  'deletedTodos': JSON.parse( localStorage.getItem( 'deletedTodos' ) || '[]' ),
 }
 
 const todos = createSlice( {
@@ -44,8 +45,14 @@ const todos = createSlice( {
     },
     'deleteTodo': ( state, action ) => {
       const { id } = action.payload
-      state.todos = state.todos.filter( ( todo ) => todo.id !== id )
-      localStorage.setItem( 'todos', JSON.stringify( state.todos ) )
+      const deletedTodo = state.todos.find( ( todo ) => todo.id === id )
+
+      if ( deletedTodo ) {
+        state.deletedTodos.push( deletedTodo )
+        state.todos = state.todos.filter( ( todo ) => todo.id !== id )
+        localStorage.setItem( 'todos', JSON.stringify( state.todos ) )
+        localStorage.setItem( 'deletedTodos', JSON.stringify( state.deletedTodos ) )
+      }
     },
   },
 } )

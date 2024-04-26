@@ -8,9 +8,9 @@ export interface Task {
 
 export interface Todos {
   todos: Task[]
+  deletedTodos: Task[]
 }
 
-/* eslint-disable no-shadow */
 export enum ErrorType {
   EMPTY_TITLE = 'Title can\'t be empty',
   ADD = 'Unable to add todo',
@@ -26,4 +26,3 @@ export enum TaskStatus {
   ACTIVE = 'active',
   COMPLETED = 'completed',
 }
-/* eslint-enable no-shadow */

@@ -1,9 +1,9 @@
 import logo from '../../assets/logo.png'
 import './Header.scss'
 import { FC } from 'react'
-import { CustomNavLink } from '../CustomNavLink/CustomNavLink.tsx'
 import { useLocation } from 'react-router-dom'
 import { RoutePath } from '../../routes/RoutePath.ts'
+import { CustomNavLink } from '../CustomNavLink'
 
 export const Header: FC = () => {
   const location = useLocation()
@@ -21,7 +21,7 @@ export const Header: FC = () => {
       break
     }
     case RoutePath.deleted: {
-      currentTitle = 'DELETED TODOS'
+      currentTitle = 'DELETED'
       break
     }
     default: {
