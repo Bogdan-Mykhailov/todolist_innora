@@ -1,1 +1,1 @@
-export * from './ErrorNotification.tsx'
+export * from './ErrorNotification'

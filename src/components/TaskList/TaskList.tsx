@@ -16,7 +16,7 @@ export const TaskList: FC<Props> = ( { tasks } ) => {
         <div className='task-list__container'>
           {tasks.map( ( { completed, title, id } ) => <div
             className='task-list__task'
-            key={id + Math.random() * 100000000}>
+            key={id + Math.floor( Math.random() * 100000000 )}>
             {
               completed && <img
                 className='task-list__icon'

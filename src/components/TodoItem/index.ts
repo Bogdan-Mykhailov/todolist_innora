@@ -1,1 +1,1 @@
-export * from './TodoItem.tsx'
+export * from './TodoItem'

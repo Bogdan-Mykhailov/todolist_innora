@@ -1,7 +1,6 @@
 import { FC, useCallback, useMemo, useState } from 'react'
 import './HomePage.scss'
-import { ErrorNotification, Filter, TodoList } from '../../components'
-import { AddTodo } from '../../components/AddTodo/AddTodo.tsx'
+import { AddTodo, ErrorNotification, Filter, TodoList } from '../../components'
 import { addTodo, deleteTodo, updateTodo, useAppDispatch, useAppSelector } from '../../services'
 import { ErrorType, Task, TaskStatus } from '../../types.ts'
 import { MAX_LENGTH } from '../../utils/constants.ts'
