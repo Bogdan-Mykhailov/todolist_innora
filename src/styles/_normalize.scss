@@ -1,6 +1,12 @@
+@font-face {
+  font-family: 'Lexend300';
+  src: url('../assets/fonts/lexend/LexendLight.ttf');
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
-  font-family: 'Mont', Helvetica, Arial, sans-serif;
+  font-family: LexendRegular, Roboto, Oxygen, sans-serif;
 }
 
 html {
