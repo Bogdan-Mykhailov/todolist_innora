@@ -38,7 +38,7 @@ export const Header: FC = () => {
         <li className='header__content-item'>
           <h2 className='header__title'>{currentTitle}</h2>
         </li>
-        <li className='header__content-item'>
+        <li className='header__content-item header__content-nav'>
           <div className='header__navWrapper'>
             <CustomNavLink to={RoutePath.home} title='Todolist'/>
             <CustomNavLink to={RoutePath.all} title='All'/>
