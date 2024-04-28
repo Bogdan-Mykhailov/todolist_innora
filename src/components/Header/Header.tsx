@@ -1,12 +1,13 @@
 import logo from '../../assets/logo.png'
 import './Header.scss'
 import { FC } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { RoutePath } from '../../routes/RoutePath.ts'
 import { CustomNavLink } from '../CustomNavLink'
 
 export const Header: FC = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const { pathname } = location
 
   let currentTitle = ''
@@ -29,11 +30,20 @@ export const Header: FC = () => {
     }
   }
 
+  const goToHomePage = () => {
+    navigate( '/home' )
+  }
+
   return (
     <header className='header'>
       <ul className='header__content'>
         <li className='header__content-item'>
-          <img className='header__logo' src={logo} alt="Main logo"/>
+          <img
+            className='header__logo'
+            src={logo}
+            alt="Main logo"
+            onClick={goToHomePage}
+          />
         </li>
         <li className='header__content-item'>
           <h2 className='header__title'>{currentTitle}</h2>
