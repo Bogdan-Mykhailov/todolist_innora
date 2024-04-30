@@ -49,13 +49,15 @@ export const TodoItem: FC<Props> = ( {
   }
 
   const closeEditMode = ( event: KeyboardEvent<HTMLInputElement> ): void => {
-    if ( event.key === 'Enter' ) {
-      if ( changeTitle.trim() ) {
-        handleUpdateTodo( id, { 'title': changeTitle } )
-        setIsEdit( false )
-      } else {
-        onDeleteTodo( id )
-      }
+    if ( event.key !== 'Enter' ) {
+      return
+    }
+
+    if ( changeTitle.trim() ) {
+      handleUpdateTodo( id, { 'title': changeTitle } )
+      setIsEdit( false )
+    } else {
+      onDeleteTodo( id )
     }
   }
 

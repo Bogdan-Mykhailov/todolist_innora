@@ -51,7 +51,8 @@ const todos = createSlice( {
         state.deletedTodos.push( deletedTodo )
         state.todos = state.todos.filter( ( todo ) => todo.id !== id )
         localStorage.setItem( 'todos', JSON.stringify( state.todos ) )
-        localStorage.setItem( 'deletedTodos', JSON.stringify( state.deletedTodos ) )
+        localStorage.setItem( 'deletedTodos', JSON
+          .stringify( state.deletedTodos ) )
       }
     },
   },

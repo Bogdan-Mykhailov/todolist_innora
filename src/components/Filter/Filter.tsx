@@ -2,6 +2,7 @@ import { FC, MouseEvent } from 'react'
 import { TaskStatus } from '../../types.ts'
 import { useAppSelector } from '../../services'
 import './Filter.scss'
+import { Link } from 'react-router-dom'
 
 interface Props {
   sortType: TaskStatus
@@ -26,7 +27,10 @@ export const Filter: FC<Props> = ( {
   const correctTitle = `${activeTodosCount} ${
     activeTodosCount === 1 ? 'item' : 'items'} left`
 
-  const handleLinkClick = ( newSortType: TaskStatus, event: MouseEvent<HTMLAnchorElement> ): void => {
+  const handleLinkClick = (
+    newSortType: TaskStatus,
+    event: MouseEvent<HTMLAnchorElement>,
+  ): void => {
     event.preventDefault()
     onSetSortType( newSortType )
   }
@@ -37,29 +41,33 @@ export const Filter: FC<Props> = ( {
         {correctTitle}
       </span>
       <nav className='filter__navigation'>
-        <a
-          href={`#/${TaskStatus.ALL}`}
-          className={sortType === TaskStatus.ALL ? 'filter__link filter__link-selected' : 'filter__link'}
+        <Link
+          to={`#/${TaskStatus.ALL}`}
+          className={sortType === TaskStatus
+            .ALL ? 'filter__link filter__link-selected' : 'filter__link'}
           onClick={( event ) => handleLinkClick( TaskStatus.ALL, event )}
         >
           All
-        </a>
+        </Link>
 
-        <a
-          href={`#/${TaskStatus.ACTIVE}`}
-          className={sortType === TaskStatus.ACTIVE ? 'filter__link filter__link-selected' : 'filter__link'}
+        <Link
+          to={`#/${TaskStatus.ACTIVE}`}
+          className={sortType === TaskStatus
+            .ACTIVE ? 'filter__link filter__link-selected' : 'filter__link'}
           onClick={( event ) => handleLinkClick( TaskStatus.ACTIVE, event )}
         >
           Active
-        </a>
+        </Link>
 
-        <a
-          href={`#/${TaskStatus.COMPLETED}`}
-          className={sortType === TaskStatus.COMPLETED ? 'filter__link filter__link-selected' : 'filter__link'}
+        <Link
+          to={`#/${TaskStatus.COMPLETED}`}
+          className={sortType === TaskStatus
+            .COMPLETED ? 'filter__link filter__link-selected' : 'filter__link'
+          }
           onClick={( event ) => handleLinkClick( TaskStatus.COMPLETED, event )}
         >
           Completed
-        </a>
+        </Link>
       </nav>
 
       <button

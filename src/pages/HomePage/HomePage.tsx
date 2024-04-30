@@ -1,7 +1,13 @@
 import { FC, useCallback, useMemo, useState } from 'react'
 import './HomePage.scss'
 import { AddTodo, ErrorNotification, Filter, TodoList } from '../../components'
-import { addTodo, deleteTodo, updateTodo, useAppDispatch, useAppSelector } from '../../services'
+import {
+  addTodo,
+  deleteTodo,
+  updateTodo,
+  useAppDispatch,
+  useAppSelector,
+} from '../../services'
 import { ErrorType, Task, TaskStatus } from '../../types.ts'
 import { MAX_LENGTH } from '../../utils/constants.ts'
 import { getFilteredTodos } from '../../utils/helpers.ts'
@@ -16,7 +22,7 @@ export const HomePage: FC = () => {
     setError( ErrorType.NONE )
   }, [] )
 
-  const handleAddTodo = ( title: string ): void => {
+  const handleAddTodo = useCallback( ( title: string ): void => {
     if ( !title.trim() ) {
       setError( ErrorType.EMPTY_TITLE )
 
@@ -32,9 +38,12 @@ export const HomePage: FC = () => {
     } catch {
       setError( ErrorType.ADD )
     }
-  }
+  }, [dispatch] )
 
-  const handleUpdateTodo = ( id: number, updatedData: Partial<Task> ): void => {
+  const handleUpdateTodo = useCallback( (
+    id: number,
+    updatedData: Partial<Task>,
+  ): void => {
     try {
       const todoToUpdate = todos.find( ( todo ) => todo.id === id )
       if ( todoToUpdate ) {
@@ -48,22 +57,26 @@ export const HomePage: FC = () => {
     } catch {
       setError( ErrorType.UPDATE )
     }
-  }
+  }, [dispatch, todos] )
 
   const activeTodosCount = useMemo( () => todos
     .filter( ( todo ) => !todo.completed ).length
   , [todos] )
 
-  const handleDeleteTodo = ( id: number ): void => {
+  const handleDeleteTodo = useCallback( ( id: number ): void => {
     try {
       dispatch( deleteTodo( { id } ) )
     } catch {
       setError( ErrorType.DELETE )
     }
-  }
+  }, [dispatch] )
 
-  const activeTodos = getFilteredTodos( todos, TaskStatus.ACTIVE )
-  const completedTodos = getFilteredTodos( todos, TaskStatus.COMPLETED )
+  const activeTodos = useMemo(
+    () => getFilteredTodos( todos, TaskStatus.ACTIVE ), [todos],
+  )
+  const completedTodos = useMemo(
+    () => getFilteredTodos( todos, TaskStatus.COMPLETED ), [todos],
+  )
 
   const changeStatusForAll = useCallback( () => {
     activeTodos

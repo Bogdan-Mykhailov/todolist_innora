@@ -46,7 +46,8 @@ export const AddTodo: FC<Props> = ( {
     <div className='addTodo'>
       {todos.length > 0 &&
         <img
-          className={activeTodosCount ? 'addTodo__tasks' : 'addTodo__tasks addTodo__tasks-completed'}
+          className={activeTodosCount ? 'addTodo__tasks' : `addTodo__tasks
+          addTodo__tasks-completed`}
           src={arrowDown}
           alt='Arrow down'
           onClick={onChangeAllStatus}
