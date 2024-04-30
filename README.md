@@ -20,22 +20,27 @@ This is a simple todo list application built with React and Redux Toolkit. It al
 
 - Update existing todo items
 
-<img width="615" alt="Screenshot 2024-03-05 at 14 25 14" src="https://github.com/Bogdan-Mykhailov/todolist_test/assets/91826635/f148d9d1-7bdb-47f5-b2f4-5f9950057901">
+<img width="1439" alt="Screenshot 2024-04-30 at 10 06 39" src="https://github.com/Bogdan-Mykhailov/todolist_innora/assets/91826635/c5e9d8fe-73b5-46cc-ad76-08db6da0f2c8">
 
 - Delete todo items
 - Filter todo items by completion status (All, Active, Completed)
 
-<img width="579" alt="Screenshot 2024-03-05 at 12 23 14" src="https://github.com/Bogdan-Mykhailov/todolist_test/assets/91826635/199b8896-f911-46d2-a51c-b77c30c6c668">
+<img width="1436" alt="Screenshot 2024-04-30 at 10 08 14" src="https://github.com/Bogdan-Mykhailov/todolist_innora/assets/91826635/b8aeccf9-62ae-4c3b-9503-63683056e18a">
 
 - Error notification for empty title and other errors
 
-<img width="627" alt="Screenshot 2024-03-05 at 12 22 46" src="https://github.com/Bogdan-Mykhailov/todolist_test/assets/91826635/441a3799-3184-4ff9-b990-535fbd48a178">
+<img width="1432" alt="Screenshot 2024-04-30 at 10 09 50" src="https://github.com/Bogdan-Mykhailov/todolist_innora/assets/91826635/f9188643-f35c-4d61-8c4f-67e0f9c012d3">
+<img width="1432" alt="Screenshot 2024-04-30 at 10 10 50" src="https://github.com/Bogdan-Mykhailov/todolist_innora/assets/91826635/3f78fa76-debd-462f-a832-efa949b63abb">
 
 - Local storage integration to persist todo data
 - Navigation between pages (All, Deleted) for detailed information about deleted tasks or all available tasks
 
 <img width="2032" alt="Screenshot 2024-04-26 at 17 31 24" src="https://github.com/Bogdan-Mykhailov/todolist_innora/assets/91826635/ecab6423-d960-4629-b4a5-0bc5e66007d2">
 <img width="2033" alt="Screenshot 2024-04-26 at 17 30 36" src="https://github.com/Bogdan-Mykhailov/todolist_innora/assets/91826635/e6cb587e-1fb3-46c4-be2c-c1a85517dad2">
+
+- Error page displayed for incorrect URLs
+
+<img width="2027" alt="Screenshot 2024-04-30 at 10 01 50" src="https://github.com/Bogdan-Mykhailov/todolist_innora/assets/91826635/3533bd21-2f95-4e4d-a4d1-071deee71e7b">
 
 
 ## Technologies Used
