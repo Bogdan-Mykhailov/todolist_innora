@@ -4,6 +4,7 @@ import { TodoItem } from '../TodoItem'
 import { getFilteredTodos } from '../../utils/helpers.ts'
 import { useAppSelector } from '../../services'
 import './TodoList.scss'
+import { CustomErrorBoundary } from '../ErrorBoundary/ErrorBoundary.tsx'
 
 interface Props {
   onUpdateTodo: ( id: number, data: Partial<Task> ) => void
@@ -20,13 +21,15 @@ export const TodoList: FC<Props> = ( {
   const filteredTodos = useMemo( () => getFilteredTodos( todos, sortType ),
     [todos, sortType] )
   return (
-    <div className='list'>
-      {filteredTodos.map( ( todo ) => <TodoItem
-        key={todo.id}
-        todo={todo}
-        handleUpdateTodo={onUpdateTodo}
-        onDeleteTodo={onDeleteTodo}
-      /> )}
-    </div>
+    <CustomErrorBoundary>
+      <div className='list'>
+        {filteredTodos.map( ( todo ) => <TodoItem
+          key={todo.id}
+          todo={todo}
+          handleUpdateTodo={onUpdateTodo}
+          onDeleteTodo={onDeleteTodo}
+        /> )}
+      </div>
+    </CustomErrorBoundary>
   )
 }

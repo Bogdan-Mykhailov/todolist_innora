@@ -3,6 +3,7 @@ import { TaskStatus } from '../../types.ts'
 import { useAppSelector } from '../../services'
 import './Filter.scss'
 import { Link } from 'react-router-dom'
+import { CustomErrorBoundary } from '../ErrorBoundary/ErrorBoundary.tsx'
 
 interface Props {
   sortType: TaskStatus
@@ -36,47 +37,51 @@ export const Filter: FC<Props> = ( {
   }
 
   return (
-    <div className='filter'>
-      <span className='filter__active-todos'>
-        {correctTitle}
-      </span>
-      <nav className='filter__navigation'>
-        <Link
-          to={`#/${TaskStatus.ALL}`}
-          className={sortType === TaskStatus
-            .ALL ? 'filter__link filter__link-selected' : 'filter__link'}
-          onClick={( event ) => handleLinkClick( TaskStatus.ALL, event )}
-        >
+    <CustomErrorBoundary>
+      <div className='filter'>
+        <span className='filter__active-todos'>
+          {correctTitle}
+        </span>
+        <nav className='filter__navigation'>
+          <Link
+            to={`#/${TaskStatus.ALL}`}
+            className={sortType === TaskStatus
+              .ALL ? 'filter__link filter__link-selected' : 'filter__link'}
+            onClick={( event ) => handleLinkClick( TaskStatus.ALL, event )}
+          >
           All
-        </Link>
+          </Link>
 
-        <Link
-          to={`#/${TaskStatus.ACTIVE}`}
-          className={sortType === TaskStatus
-            .ACTIVE ? 'filter__link filter__link-selected' : 'filter__link'}
-          onClick={( event ) => handleLinkClick( TaskStatus.ACTIVE, event )}
-        >
+          <Link
+            to={`#/${TaskStatus.ACTIVE}`}
+            className={sortType === TaskStatus
+              .ACTIVE ? 'filter__link filter__link-selected' : 'filter__link'}
+            onClick={( event ) => handleLinkClick( TaskStatus.ACTIVE, event )}
+          >
           Active
-        </Link>
+          </Link>
 
-        <Link
-          to={`#/${TaskStatus.COMPLETED}`}
-          className={sortType === TaskStatus
-            .COMPLETED ? 'filter__link filter__link-selected' : 'filter__link'
-          }
-          onClick={( event ) => handleLinkClick( TaskStatus.COMPLETED, event )}
-        >
+          <Link
+            to={`#/${TaskStatus.COMPLETED}`}
+            className={sortType === TaskStatus
+              .COMPLETED ? 'filter__link filter__link-selected' : 'filter__link'
+            }
+            onClick={
+              ( event ) => handleLinkClick( TaskStatus.COMPLETED, event )
+            }
+          >
           Completed
-        </Link>
-      </nav>
+          </Link>
+        </nav>
 
-      <button
-        className='filter__button'
-        type='button'
-        onClick={handleClearCompleted}
-      >
+        <button
+          className='filter__button'
+          type='button'
+          onClick={handleClearCompleted}
+        >
         Clear completed
-      </button>
-    </div>
+        </button>
+      </div>
+    </CustomErrorBoundary>
   )
 }

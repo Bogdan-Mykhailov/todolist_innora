@@ -11,6 +11,10 @@ import {
 import { ErrorType, Task, TaskStatus } from '../../types.ts'
 import { MAX_LENGTH } from '../../utils/constants.ts'
 import { getFilteredTodos } from '../../utils/helpers.ts'
+import '../../components/ErrorBoundary/ErrorBoundary.scss'
+import {
+  CustomErrorBoundary,
+} from '../../components/ErrorBoundary/ErrorBoundary.tsx'
 
 export const HomePage: FC = () => {
   const todos = useAppSelector( ( state ) => state.todos.todos )
@@ -89,35 +93,39 @@ export const HomePage: FC = () => {
   }, [completedTodos, activeTodos] )
 
   return (
-    <div className='home'>
-      <div className='home__wrapper'>
-        <AddTodo
-          onAddTodo={handleAddTodo}
-          onChangeAllStatus={changeStatusForAll}
-          activeTodosCount={activeTodosCount}
-        />
-        <TodoList
-          sortType={sortType}
-          onUpdateTodo={handleUpdateTodo}
-          onDeleteTodo={handleDeleteTodo}
-        />
-        {
-          todos.length > 0 && <Filter
-            onSetSortType={setSortType}
-            sortType={sortType}
-            onDeleteTodo={handleDeleteTodo}
+    <CustomErrorBoundary>
+      <div className='home'>
+        <div className='home__wrapper'>
+          <AddTodo
+            onAddTodo={handleAddTodo}
+            onChangeAllStatus={changeStatusForAll}
             activeTodosCount={activeTodosCount}
           />
-        }
 
-        {error &&
+          <TodoList
+            sortType={sortType}
+            onUpdateTodo={handleUpdateTodo}
+            onDeleteTodo={handleDeleteTodo}
+          />
+
+          {
+            todos.length > 0 && <Filter
+              onSetSortType={setSortType}
+              sortType={sortType}
+              onDeleteTodo={handleDeleteTodo}
+              activeTodosCount={activeTodosCount}
+            />
+          }
+
+          {error &&
           <ErrorNotification
             setError={setError}
             error={error}
             onRemoveError={handleRemoveError}
           />
-        }
+          }
+        </div>
       </div>
-    </div>
+    </CustomErrorBoundary>
   )
 }
